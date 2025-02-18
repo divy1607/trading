@@ -2,7 +2,8 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import LogoutButton from "../components/LogoutButton";
-import RandomNumberDisplay from "../components/RandomNumberTable";
+import WebSocketClient from "../components/WebSocketClient";
+import WebSocketGraph from "../components/WebSocketGraph";
 
 export default async function Page() {
     const session = await getServerSession(authOptions);
@@ -21,6 +22,8 @@ export default async function Page() {
             <h1 className="text-2xl font-bold mb-4">
                 Welcome, {username || "User"}!
             </h1>
+            <WebSocketClient />
+            <WebSocketGraph />
             <LogoutButton />
         </div>
     );
